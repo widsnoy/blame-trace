@@ -1,0 +1,2984 @@
+{
+  "node": "v25.6.1",
+  "git": "git version 2.53.0.windows.1",
+  "rounds": 7,
+  "warmups": 1,
+  "files": [
+    {
+      "file": "docs\\lang\\index.md",
+      "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+      "bytes": 290,
+      "contentHash": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+      "variants": {
+        "current": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 83.91809999999987,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 3.2099000000000615,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.92660000000001,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.2858000000001084,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.00959999999986394,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 85.52289999999994,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.03629999999976,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.5315999999997985,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 83.98739999999998,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.2545999999997548,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.008699999999862484,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 86.55060000000003,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.83380000000034,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.1068999999997686,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 84.14820000000009,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.2729000000003907,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.01830000000018117,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 84.64890000000014,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 83.29149999999981,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.3454999999999018,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.34130000000005,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.25529999999980646,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.014499999999770807,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 85.10039999999981,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.09500000000025,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.2916000000000167,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.23970000000008,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.254399999999805,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.0067000000003645255,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 83.91650000000027,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.1197000000002,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.0060999999996056,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.79330000000027,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.26859999999942374,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.007300000000213913,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 84.36099999999988,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.35230000000047,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.032799999999952,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.58340000000044,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.3105999999997948,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.00800000000072032,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 88.51829999999973,
+                "processes": 1,
+                "hashes": 1
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 85.09500000000025,
+              "minMs": 83.29149999999981,
+              "maxMs": 86.83380000000034,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 2.2916000000000167,
+              "minMs": 2.0060999999996056,
+              "maxMs": 3.2099000000000615,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 85.58340000000044,
+              "minMs": 83.98739999999998,
+              "maxMs": 86.92660000000001,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "misses1000": {
+              "medianMs": 0.26859999999942374,
+              "minMs": 0.254399999999805,
+              "maxMs": 0.3105999999997948,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.008699999999862484,
+              "minMs": 0.0067000000003645255,
+              "maxMs": 0.01830000000018117,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 85.10039999999981,
+              "minMs": 83.91650000000027,
+              "maxMs": 88.51829999999973,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          }
+        },
+        "baseline": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 84.52420000000006,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.6603000000000065,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.68409999999994,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 2.626600000000053,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.00909999999998945,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 85.41129999999998,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.7627,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.1717000000001008,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 84.78819999999973,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 2.886199999999917,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.010199999999713327,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 86.88540000000012,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.32389999999987,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.190099999999802,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.79970000000003,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 2.6364000000003216,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.011199999999917054,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 86.0340000000001,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.78849999999966,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.69820000000027,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.96540000000005,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 2.963300000000345,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.018000000000029104,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 87.01450000000023,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.04849999999988,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.169300000000021,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 83.82009999999991,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 3.07549999999992,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.016200000000026193,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 84.16660000000002,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.57029999999986,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.240700000000288,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.6848,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 2.680500000000393,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.008800000000519503,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 85.47479999999996,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.20859999999993,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.5088999999998123,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 84.11589999999978,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 2.5133999999998196,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.008399999999710417,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 84.47540000000026,
+                "processes": 1,
+                "hashes": 30
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 85.57029999999986,
+              "minMs": 84.52420000000006,
+              "maxMs": 86.78849999999966,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 2.240700000000288,
+              "minMs": 2.169300000000021,
+              "maxMs": 2.69820000000027,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 85.68409999999994,
+              "minMs": 83.82009999999991,
+              "maxMs": 85.96540000000005,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "misses1000": {
+              "medianMs": 2.680500000000393,
+              "minMs": 2.5133999999998196,
+              "maxMs": 3.07549999999992,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.010199999999713327,
+              "minMs": 0.008399999999710417,
+              "maxMs": 0.018000000000029104,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 85.47479999999996,
+              "minMs": 84.16660000000002,
+              "maxMs": 87.01450000000023,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                30,
+                30,
+                30,
+                30,
+                30,
+                30,
+                30
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "docs\\graph\\mdst.md",
+      "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+      "bytes": 8842,
+      "contentHash": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+      "variants": {
+        "current": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 80.89419999999973,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.152100000000246,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 82.40359999999964,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.3282000000008338,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.027100000000245927,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 83.41229999999996,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 80.23739999999998,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.4259000000001834,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 80.02679999999964,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.3510000000005675,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.02790000000004511,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 79.57590000000073,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 81.29249999999956,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.005000000000109,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 82.78009999999995,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.26159999999981665,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.026600000000144064,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 81.90619999999944,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 82.1201000000001,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.4029000000009546,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 81.1825000000008,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.2523000000001048,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.02500000000145519,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 79.8760000000002,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 80.80999999999949,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.002599999999802,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 81.72789999999986,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.355199999999968,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.02629999999953725,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 85.79490000000078,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 82.7533999999996,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.3536000000003696,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 82.61779999999999,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.34569999999985157,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.02870000000075379,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 80.71630000000005,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 82.39450000000033,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.016200000000026,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 87.03739999999925,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.4706000000005588,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.038500000000567525,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 81.18819999999869,
+                "processes": 1,
+                "hashes": 1
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 81.29249999999956,
+              "minMs": 80.23739999999998,
+              "maxMs": 82.7533999999996,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 2.152100000000246,
+              "minMs": 2.002599999999802,
+              "maxMs": 2.4259000000001834,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 82.40359999999964,
+              "minMs": 80.02679999999964,
+              "maxMs": 87.03739999999925,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "misses1000": {
+              "medianMs": 0.34569999999985157,
+              "minMs": 0.2523000000001048,
+              "maxMs": 0.4706000000005588,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.027100000000245927,
+              "minMs": 0.02500000000145519,
+              "maxMs": 0.038500000000567525,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 81.18819999999869,
+              "minMs": 79.57590000000073,
+              "maxMs": 85.79490000000078,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          }
+        },
+        "baseline": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 81.66129999999976,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.5710999999992055,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 80.65679999999975,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.872299999999996,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.04389999999966676,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 81.3092999999999,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 80.97260000000006,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.743999999999687,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 81.84820000000036,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.801800000000185,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.044399999999768625,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 83.0047999999997,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 80.48520000000008,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.1563999999998487,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 81.48270000000048,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.615899999999783,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.056599999999889405,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 82.3720000000003,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 82.42860000000019,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.146700000000237,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 88.77139999999963,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.27969999999914,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.044200000000273576,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 82.29889999999978,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 88.59629999999925,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.2726000000002387,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 80.47469999999885,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.22069999999985,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.04380000000128348,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 82.00009999999929,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 84.0028999999995,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.841999999998734,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 82.36570000000029,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.731599999999162,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.04640000000108557,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 80.96839999999975,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 82.48090000000047,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.4206000000012864,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 82.70460000000094,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 19.216700000000856,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.04470000000037544,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 86.70629999999983,
+                "processes": 1,
+                "hashes": 30
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 82.42860000000019,
+              "minMs": 80.48520000000008,
+              "maxMs": 88.59629999999925,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 2.4206000000012864,
+              "minMs": 2.146700000000237,
+              "maxMs": 2.841999999998734,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 81.84820000000036,
+              "minMs": 80.47469999999885,
+              "maxMs": 88.77139999999963,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "misses1000": {
+              "medianMs": 19.615899999999783,
+              "minMs": 19.216700000000856,
+              "maxMs": 19.872299999999996,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.044399999999768625,
+              "minMs": 0.04380000000128348,
+              "maxMs": 0.056599999999889405,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 82.29889999999978,
+              "minMs": 80.96839999999975,
+              "maxMs": 86.70629999999983,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                30,
+                30,
+                30,
+                30,
+                30,
+                30,
+                30
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "docs\\math\\number-theory\\basic.md",
+      "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+      "bytes": 26249,
+      "contentHash": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+      "variants": {
+        "current": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 79.5033999999996,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.5969999999997526,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 80.64170000000013,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.27109999999993306,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.06979999999930442,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 79.5645999999997,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 78.5591000000004,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.809000000001106,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 78.81580000000031,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.359599999999773,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.07220000000052096,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 80.63750000000073,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.96839999999975,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.0803999999989173,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 78.304900000001,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.42300000000068394,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.07280000000173459,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 85.76789999999892,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 81.25530000000072,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.046700000000783,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 80.8739999999998,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.31459999999970023,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.0918999999994412,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 80.62029999999868,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 80.14919999999984,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.452400000000125,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.66199999999844,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.4591000000000349,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.08139999999912106,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 79.0586000000003,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 79.16419999999925,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.03440000000046,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.21589999999924,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.31939999999849533,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.0727999999999156,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 79.58809999999903,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.1869999999999,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.903199999998833,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.74009999999907,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.34680000000116706,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.0761000000002241,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 79.06049999999959,
+                "processes": 1,
+                "hashes": 1
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 80.14919999999984,
+              "minMs": 78.5591000000004,
+              "maxMs": 86.1869999999999,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 2.046700000000783,
+              "minMs": 1.809000000001106,
+              "maxMs": 2.5969999999997526,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 79.66199999999844,
+              "minMs": 78.304900000001,
+              "maxMs": 80.8739999999998,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "misses1000": {
+              "medianMs": 0.34680000000116706,
+              "minMs": 0.27109999999993306,
+              "maxMs": 0.4591000000000349,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.07280000000173459,
+              "minMs": 0.06979999999930442,
+              "maxMs": 0.0918999999994412,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 79.58809999999903,
+              "minMs": 79.0586000000003,
+              "maxMs": 85.76789999999892,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          }
+        },
+        "baseline": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 78.89710000000014,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.8793000000005122,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 78.9994999999999,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 60.07220000000052,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.12309999999888532,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 80.35050000000047,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 81.01280000000042,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.131100000000515,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.66439999999966,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 58.72450000000026,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.12430000000131258,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 80.2548999999999,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 79.24189999999908,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.805000000000291,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.49759999999878,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 61.92000000000007,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.12769999999909487,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 81.11839999999938,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 79.8098000000009,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.8315000000002328,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.28359999999884,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 59.919599999999264,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.1194999999988795,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 80.8822999999993,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 79.88260000000082,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.9678000000003522,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 78.28859999999986,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 57.431399999999485,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.12379999999939173,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 81.16389999999956,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 85.94679999999971,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.5024999999986903,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 80.5586000000003,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 61.084100000000035,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.13390000000072177,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 79.53219999999965,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 79.54130000000077,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.821700000000419,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 79.40159999999923,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 60.89639999999963,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.12579999999979918,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 80.44540000000052,
+                "processes": 1,
+                "hashes": 30
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 79.8098000000009,
+              "minMs": 78.89710000000014,
+              "maxMs": 85.94679999999971,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 1.8793000000005122,
+              "minMs": 1.805000000000291,
+              "maxMs": 2.5024999999986903,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 79.40159999999923,
+              "minMs": 78.28859999999986,
+              "maxMs": 80.5586000000003,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "misses1000": {
+              "medianMs": 60.07220000000052,
+              "minMs": 57.431399999999485,
+              "maxMs": 61.92000000000007,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.12430000000131258,
+              "minMs": 0.1194999999988795,
+              "maxMs": 0.13390000000072177,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 80.44540000000052,
+              "minMs": 79.53219999999965,
+              "maxMs": 81.16389999999956,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                30,
+                30,
+                30,
+                30,
+                30,
+                30,
+                30
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "docs\\math\\number-theory\\continued-fraction.md",
+      "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+      "bytes": 91646,
+      "contentHash": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+      "variants": {
+        "current": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 86.85829999999987,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.8074000000015076,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 88.03549999999814,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.33539999999993597,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.22220000000015716,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 89.14240000000063,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 87.06970000000001,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 3.0249000000003434,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 85.92979999999807,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.39689999999973224,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.22420000000056461,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 86.5528000000013,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 87.32010000000082,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.0128999999978987,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 87.75249999999869,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.37189999999827705,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.22239999999874271,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 85.39760000000024,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 88.01120000000083,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.964300000003277,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 88.1221000000005,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.37299999999959255,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.2209000000002561,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 91.71039999999994,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 87.05919999999969,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.7893000000003667,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.49179999999978,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.37119999999777065,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.22039999999833526,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 86.21559999999954,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.95869999999923,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.8654000000024098,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.86739999999918,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.3683000000019092,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.2265000000006694,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 87.5528000000013,
+                "processes": 1,
+                "hashes": 1
+              }
+            },
+            {
+              "cold": {
+                "ms": 87.89350000000195,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.7563999999983935,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 87.56140000000232,
+                "processes": 1,
+                "hashes": 1
+              },
+              "misses1000": {
+                "ms": 0.559399999998277,
+                "processes": 0,
+                "hashes": 1
+              },
+              "undoRedo": {
+                "ms": 0.25649999999950523,
+                "processes": 0,
+                "hashes": 2
+              },
+              "coalesced10": {
+                "ms": 87.79060000000027,
+                "processes": 1,
+                "hashes": 1
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 87.06970000000001,
+              "minMs": 86.85829999999987,
+              "maxMs": 88.01120000000083,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 1.8654000000024098,
+              "minMs": 1.7563999999983935,
+              "maxMs": 3.0249000000003434,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 87.56140000000232,
+              "minMs": 85.92979999999807,
+              "maxMs": 88.1221000000005,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "misses1000": {
+              "medianMs": 0.37189999999827705,
+              "minMs": 0.33539999999993597,
+              "maxMs": 0.559399999998277,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.22239999999874271,
+              "minMs": 0.22039999999833526,
+              "maxMs": 0.25649999999950523,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 87.5528000000013,
+              "minMs": 85.39760000000024,
+              "maxMs": 91.71039999999994,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          }
+        },
+        "baseline": {
+          "samples": [
+            {
+              "cold": {
+                "ms": 87.83889999999883,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.0842000000011467,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.57340000000113,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 213.59850000000006,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.4268000000010943,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 88.36219999999958,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 87.99020000000019,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.9667999999983294,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 87.78249999999753,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 215.53910000000178,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.42660000000250875,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 87.85020000000077,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 88.42180000000008,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.2023000000008324,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 87.27529999999751,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 212.1800000000003,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.6945000000014261,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 88.6352999999981,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 87.12770000000091,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.586800000000949,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 87.71350000000166,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 212.4533999999985,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.4254999999975553,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 88.68369999999777,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.63829999999871,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.8326000000015483,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 88.53220000000147,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 216.75890000000072,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.4363000000012107,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 88.255799999999,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 86.79720000000088,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 1.9844999999986612,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.86599999999817,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 218.05189999999857,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.5146000000022468,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 94.91340000000127,
+                "processes": 1,
+                "hashes": 30
+              }
+            },
+            {
+              "cold": {
+                "ms": 90.09870000000228,
+                "processes": 1,
+                "hashes": 1
+              },
+              "hits10000": {
+                "ms": 2.045799999999872,
+                "processes": 0,
+                "hashes": 0
+              },
+              "edit": {
+                "ms": 86.395999999997,
+                "processes": 1,
+                "hashes": 2
+              },
+              "misses1000": {
+                "ms": 222.2453999999998,
+                "processes": 0,
+                "hashes": 2000
+              },
+              "undoRedo": {
+                "ms": 0.4668000000019674,
+                "processes": 0,
+                "hashes": 4
+              },
+              "coalesced10": {
+                "ms": 92.79239999999845,
+                "processes": 1,
+                "hashes": 30
+              }
+            }
+          ],
+          "summary": {
+            "cold": {
+              "medianMs": 87.83889999999883,
+              "minMs": 86.63829999999871,
+              "maxMs": 90.09870000000228,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "hits10000": {
+              "medianMs": 2.045799999999872,
+              "minMs": 1.8326000000015483,
+              "maxMs": 2.586800000000949,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "edit": {
+              "medianMs": 87.27529999999751,
+              "minMs": 86.395999999997,
+              "maxMs": 88.53220000000147,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "misses1000": {
+              "medianMs": 215.53910000000178,
+              "minMs": 212.1800000000003,
+              "maxMs": 222.2453999999998,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000,
+                2000
+              ]
+            },
+            "undoRedo": {
+              "medianMs": 0.4363000000012107,
+              "minMs": 0.4254999999975553,
+              "maxMs": 0.6945000000014261,
+              "processes": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "hashes": [
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4
+              ]
+            },
+            "coalesced10": {
+              "medianMs": 88.6352999999981,
+              "minMs": 87.85020000000077,
+              "maxMs": 94.91340000000127,
+              "processes": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "hashes": [
+                30,
+                30,
+                30,
+                30,
+                30,
+                30,
+                30
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
