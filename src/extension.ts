@@ -2,10 +2,14 @@ import * as vscode from 'vscode';
 import path from 'node:path';
 import { blameLine, locateRepository, runGit, showCommit, type Attribution, type Repository } from './git';
 import { DocumentBlameCache } from './documentCache';
+import { GitLabClient, instanceUrl, remoteProject } from './gitlab';
+import { SquashResolver, type SquashResolution } from './squashResolver';
 
 interface SelectionResult {
   repo: Repository;
   attribution: Attribution;
+  squash?: SquashResolution;
+  id?: number;
 }
 
 interface GitRepository {
@@ -48,7 +52,8 @@ function annotation(attribution: Attribution): string {
   return text.length > 100 ? `${text.slice(0, 99)}…` : text;
 }
 
-function hover(attribution: Attribution): vscode.MarkdownString {
+function hover(result: SelectionResult): vscode.MarkdownString {
+  const { attribution, squash } = result;
   const markdown = new vscode.MarkdownString();
   if (attribution.kind === 'uncommitted') {
     markdown.appendText('This line has uncommitted changes.');
@@ -56,8 +61,16 @@ function hover(attribution: Attribution): vscode.MarkdownString {
   }
   if (attribution.kind === 'unavailable') return markdown;
   markdown.appendText(`${attribution.summary}\n\n${attribution.author} · ${new Date(attribution.authorTime * 1000).toLocaleString()}\n\n${attribution.sha}`);
-  markdown.appendMarkdown('\n\n[Show commit details](command:blameTrace.showCommit)');
-  markdown.isTrusted = { enabledCommands: ['blameTrace.showCommit'] };
+  const args = encodeURIComponent(JSON.stringify([result.id]));
+  if (squash?.kind === 'resolved') {
+    markdown.appendText(`\n\nOriginal: ${squash.original.sha}\n${squash.original.author} · ${new Date(squash.original.authorTime * 1000).toLocaleString()}\n${squash.original.summary}\n\nSquash: ${attribution.sha}`);
+  }
+  markdown.appendMarkdown(`\n\n[Show commit details](command:blameTrace.showCommit?${args})`);
+  if (squash?.kind === 'resolved' || squash?.kind === 'mr-only') {
+    markdown.appendMarkdown(`\n\n[Open MR !${squash.mr.iid}](command:blameTrace.openMergeRequest?${args}) · [Show squash commits](command:blameTrace.showSquashCommits?${args}) · [Show squash commit](command:blameTrace.showSquashCommit?${args})`);
+  }
+  if (squash?.kind === 'mr-only' || squash?.kind === 'unavailable') markdown.appendText(`\n\n${squash.reason}`);
+  markdown.isTrusted = { enabledCommands: ['blameTrace.showCommit', 'blameTrace.openMergeRequest', 'blameTrace.showSquashCommits', 'blameTrace.showSquashCommit'] };
   return markdown;
 }
 
@@ -73,6 +86,14 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(output, decoration);
 
   const cache = new DocumentBlameCache();
+  const resolvers = new Map<string, SquashResolver>();
+  let gitlabGeneration = 0;
+  function resetGitLab(): void {
+    gitlabGeneration++;
+    for (const resolver of resolvers.values()) resolver.dispose();
+    resolvers.clear();
+  }
+  const secretKey = (instance: string) => `blameTrace.gitlab.token:${instance}`;
   const editedAt = new Map<string, number>();
   const rebuildTimers = new Map<string, ReturnType<typeof setTimeout>>();
   let gitApi: GitApi | undefined;
@@ -155,17 +176,58 @@ export function activate(context: vscode.ExtensionContext): void {
   }
 
   function render(editor: vscode.TextEditor, line: number, result: SelectionResult): void {
-    const text = annotation(result.attribution);
+    result.id ??= requestId;
+    const traced = result.squash?.kind === 'resolved' ? result.squash : undefined;
+    const text = traced && result.attribution.kind === 'committed'
+      ? `${annotation({ ...result.attribution, sha: traced.original.sha, author: traced.original.author, authorTime: traced.original.authorTime, summary: traced.original.summary })} · squash !${traced.mr.iid}`
+      : annotation(result.attribution);
     if (!text) return;
     const length = editor.document.lineAt(line).text.length;
     const range = new vscode.Range(line, 0, line, length);
     editor.setDecorations(decoration, [{
       range,
-      hoverMessage: hover(result.attribution),
+      hoverMessage: hover(result),
       renderOptions: { after: { contentText: `  ${text}` } }
     }]);
     decoratedEditor = editor;
     current = result;
+  }
+
+  async function trace(editor: vscode.TextEditor, line: number, version: number, result: SelectionResult, id: number): Promise<void> {
+    const generation = gitlabGeneration;
+    const valid = () => id === requestId && generation === gitlabGeneration && vscode.workspace.isTrusted &&
+      vscode.window.activeTextEditor === editor && editor.document.version === version && editor.selection.active.line === line;
+    const config = vscode.workspace.getConfiguration('blameTrace.gitlab', editor.document.uri);
+    if (!config.get<boolean>('enabled', false) || result.attribution.kind !== 'committed') return;
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      if (!valid()) return;
+      const instance = instanceUrl(config.get<string>('instanceUrl', 'https://gitlab.com'));
+      const folder = vscode.workspace.getWorkspaceFolder(editor.document.uri);
+      const configuredProject = config.get<string>('projectPath', '').trim();
+      // A folder override belongs only to that folder's root repository.
+      const project = configuredProject && folder && path.resolve(folder.uri.fsPath) === path.resolve(result.repo.root)
+        ? configuredProject
+        : remoteProject((await runGit(result.repo.root, ['remote', 'get-url', '--', config.get<string>('remoteName', 'origin')])).trim(), instance);
+      if (!valid()) return;
+      let resolver = resolvers.get(instance);
+      if (!resolver) {
+        const token = await context.secrets.get(secretKey(instance)) ?? '';
+        if (!valid()) return;
+        resolver = resolvers.get(instance);
+        if (!resolver) {
+          resolver = new SquashResolver(new GitLabClient(instance, token));
+          resolvers.set(instance, resolver);
+        }
+      }
+      const squash = await resolver.resolve(project, result.attribution);
+      if (!valid()) return;
+      const latestHead = (await runGit(result.repo.root, ['rev-parse', '--verify', 'HEAD'])).trim();
+      if (!valid() || latestHead !== result.repo.head) return;
+      render(editor, line, { ...result, squash });
+    } catch (error) {
+      if (valid()) render(editor, line, { ...result, squash: { kind: 'unavailable', reason: error instanceof Error ? error.message : 'GitLab trace unavailable' } });
+    }
   }
 
   async function update(id: number): Promise<void> {
@@ -221,6 +283,7 @@ export function activate(context: vscode.ExtensionContext): void {
         return;
       }
       render(editor, line, { repo, attribution });
+      void trace(editor, line, version, { repo, attribution, id }, id);
     } catch (error) {
       if (!tokenSource.token.isCancellationRequested && id === requestId) {
         output.appendLine(error instanceof Error ? error.message : String(error));
@@ -235,9 +298,14 @@ export function activate(context: vscode.ExtensionContext): void {
     const config = vscode.workspace.getConfiguration('blameTrace');
     await config.update('enabled', !config.get<boolean>('enabled', true), vscode.ConfigurationTarget.Global);
   }));
-  context.subscriptions.push(vscode.commands.registerCommand('blameTrace.showCommit', async () => {
+  context.subscriptions.push(vscode.commands.registerCommand('blameTrace.showCommit', async (id?: number) => {
+    if (id !== undefined && id !== current?.id) return;
     if (!current || current.attribution.kind !== 'committed') {
       vscode.window.showInformationMessage('No committed line is selected.');
+      return;
+    }
+    if (current.squash?.kind === 'resolved' && current.squash.original.url) {
+      await vscode.env.openExternal(vscode.Uri.parse(current.squash.original.url));
       return;
     }
     try {
@@ -247,6 +315,52 @@ export function activate(context: vscode.ExtensionContext): void {
     } catch (error) {
       vscode.window.showErrorMessage(`Blame Trace: ${error instanceof Error ? error.message : String(error)}`);
     }
+  }));
+
+  context.subscriptions.push(vscode.commands.registerCommand('blameTrace.showSquashCommit', async (id?: number) => {
+    const selected = current;
+    if (!selected || (id !== undefined && id !== selected.id) || selected.attribution.kind !== 'committed') return;
+    try { output.clear(); output.append(await showCommit(selected.repo, selected.attribution.sha)); output.show(true); }
+    catch { vscode.window.showErrorMessage('Blame Trace: Could not read the local squash commit.'); }
+  }));
+  context.subscriptions.push(vscode.commands.registerCommand('blameTrace.openMergeRequest', async (id?: number) => {
+    if (id !== undefined && id !== current?.id) return;
+    const squash = current?.squash;
+    if (squash?.kind === 'resolved' || squash?.kind === 'mr-only') await vscode.env.openExternal(vscode.Uri.parse(squash.mr.url));
+  }));
+  context.subscriptions.push(vscode.commands.registerCommand('blameTrace.showSquashCommits', async (id?: number) => {
+    if (id !== undefined && id !== current?.id) return;
+    const squash = current?.squash;
+    if (!squash || (squash.kind !== 'resolved' && squash.kind !== 'mr-only')) {
+      vscode.window.showInformationMessage('No squash MR is available. Enable GitLab tracing and leave the cursor on a committed line.');
+      return;
+    }
+    if (!squash.commits.length) {
+      vscode.window.showInformationMessage('The MR commit list is unavailable. Open the merge request for details.');
+      return;
+    }
+    const selected = await vscode.window.showQuickPick(squash.commits.map(commit => ({
+      label: commit.summary, description: `${commit.sha.slice(0, 8)} · ${commit.author}`, detail: commit.url ? undefined : 'Source project unavailable; opens the merge request', commit
+    })), { title: `Squash MR !${squash.mr.iid}: original commits`, matchOnDescription: true });
+    if (selected) await vscode.env.openExternal(vscode.Uri.parse(selected.commit.url ?? squash.mr.url));
+  }));
+  for (const action of ['setGitLabToken', 'deleteGitLabToken'] as const) {
+    context.subscriptions.push(vscode.commands.registerCommand(`blameTrace.${action}`, async () => {
+      if (!vscode.workspace.isTrusted) return;
+      const config = vscode.workspace.getConfiguration('blameTrace.gitlab', vscode.window.activeTextEditor?.document.uri);
+      try {
+        const instance = instanceUrl(config.get<string>('instanceUrl', 'https://gitlab.com'));
+        if (action === 'setGitLabToken') {
+          const token = await vscode.window.showInputBox({ title: `GitLab token for ${instance}`, password: true, ignoreFocusOut: true, prompt: 'A token with read_api permission. Stored in VS Code SecretStorage.' });
+          if (!token?.trim()) return;
+          await context.secrets.store(secretKey(instance), token.trim());
+        } else await context.secrets.delete(secretKey(instance));
+        resetGitLab(); schedule();
+      } catch { vscode.window.showErrorMessage('Blame Trace: Check your GitLab instance URL and secret storage.'); }
+    }));
+  }
+  context.subscriptions.push(context.secrets.onDidChange(event => {
+    if (event.key.startsWith('blameTrace.gitlab.token:')) { resetGitLab(); schedule(); }
   }));
 
   context.subscriptions.push(vscode.window.onDidChangeTextEditorSelection((event) => {
@@ -273,13 +387,16 @@ export function activate(context: vscode.ExtensionContext): void {
     rebuildTimers.delete(document.uri.fsPath);
   }));
   context.subscriptions.push(vscode.workspace.onDidChangeConfiguration((event) => {
-    if (event.affectsConfiguration('blameTrace.enabled')) schedule();
+    if (event.affectsConfiguration('blameTrace.gitlab')) { resetGitLab(); schedule(); }
+    else if (event.affectsConfiguration('blameTrace.enabled')) { resetGitLab(); schedule(); }
   }));
   context.subscriptions.push(vscode.window.onDidChangeWindowState((event) => {
     if (event.focused) schedule();
   }));
   context.subscriptions.push(vscode.workspace.onDidGrantWorkspaceTrust(schedule));
   context.subscriptions.push({ dispose: () => {
+    requestId++;
+    resetGitLab();
     cancellation?.cancel();
     cancellation?.dispose();
     for (const timer of rebuildTimers.values()) clearTimeout(timer);

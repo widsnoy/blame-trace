@@ -3,7 +3,7 @@ import path from 'node:path';
 import type { CancellationToken } from 'vscode';
 
 export type Attribution =
-  | { kind: 'committed'; sha: string; sourceLine: number; author: string; authorTime: number; summary: string }
+  | { kind: 'committed'; sha: string; sourceLine: number; sourcePath?: string; author: string; authorTime: number; summary: string }
   | { kind: 'uncommitted' }
   | { kind: 'unavailable'; reason: string };
 
@@ -98,6 +98,7 @@ export function parseBlame(output: string): Attribution {
     kind: 'committed',
     sha: match[1],
     sourceLine: Number(match[2]),
+    sourcePath: fields.has('filename') ? decodeGitPath(fields.get('filename')!) : undefined,
     author: fields.get('author') || 'Unknown',
     authorTime: Number(fields.get('author-time') || 0),
     summary: fields.get('summary') || '(no summary)'
@@ -106,9 +107,9 @@ export function parseBlame(output: string): Attribution {
 
 export function parseIncrementalBlame(output: string): readonly Attribution[] {
   const metadata = new Map<string, Map<string, string>>();
-  const hunks: { sha: string; source: number; result: number; count: number }[] = [];
+  const hunks: { sha: string; source: number; result: number; count: number; sourcePath?: string }[] = [];
   const lines = output.split(/\r?\n/);
-  let current: { sha: string; source: number; result: number; count: number } | undefined;
+  let current: typeof hunks[number] | undefined;
   for (const line of lines) {
     const header = /^([0-9a-f]{40}|[0-9a-f]{64}) (\d+) (\d+) (\d+)$/.exec(line);
     if (header) {
@@ -118,7 +119,11 @@ export function parseIncrementalBlame(output: string): readonly Attribution[] {
       continue;
     }
     if (!current) continue;
-    if (line.startsWith('filename ')) { current = undefined; continue; }
+    if (line.startsWith('filename ')) {
+      current.sourcePath = decodeGitPath(line.slice(9));
+      current = undefined;
+      continue;
+    }
     const separator = line.indexOf(' ');
     if (separator > 0) {
       const fields = metadata.get(current.sha) ?? new Map<string, string>();
@@ -136,6 +141,7 @@ export function parseIncrementalBlame(output: string): readonly Attribution[] {
         ? { kind: 'uncommitted' }
         : {
           kind: 'committed', sha: hunk.sha, sourceLine: hunk.source + offset,
+          sourcePath: hunk.sourcePath,
           author: fields?.get('author') || 'Unknown',
           authorTime: Number(fields?.get('author-time') || 0),
           summary: fields?.get('summary') || '(no summary)'
@@ -146,6 +152,32 @@ export function parseIncrementalBlame(output: string): readonly Attribution[] {
     throw new GitError('Incomplete incremental blame output');
   }
   return rows;
+}
+
+// Git quotes paths with C escapes, including octal UTF-8 bytes.
+export function decodeGitPath(value: string): string {
+  if (!value.startsWith('"')) return value;
+  if (!value.endsWith('"')) throw new GitError('Invalid quoted Git path');
+  const chunks: Buffer[] = [];
+  const escapes: Record<string, string> = { a: '\x07', b: '\b', t: '\t', n: '\n', v: '\v', f: '\f', r: '\r', '\\': '\\', '"': '"' };
+  const inner = value.slice(1, -1);
+  for (let i = 0; i < inner.length;) {
+    if (inner[i] !== '\\') {
+      const point = String.fromCodePoint(inner.codePointAt(i)!);
+      chunks.push(Buffer.from(point));
+      i += point.length;
+      continue;
+    }
+    const octal = /^[0-7]{3}/.exec(inner.slice(i + 1));
+    if (octal) { chunks.push(Buffer.from([parseInt(octal[0], 8)])); i += 4; }
+    else {
+      const escaped = escapes[inner[i + 1]];
+      if (escaped === undefined) throw new GitError('Invalid Git path escape');
+      chunks.push(Buffer.from(escaped));
+      i += 2;
+    }
+  }
+  return Buffer.concat(chunks).toString('utf8');
 }
 
 function relativePath(repo: Repository, file: string): string | undefined {

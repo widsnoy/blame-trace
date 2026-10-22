@@ -1,7 +1,7 @@
 {
   "name": "blame-trace",
   "displayName": "Blame Trace",
-  "description": "Show Git blame for the current line, with future squash history support.",
+  "description": "Show current-line Git blame and trace original commits inside GitLab squash merges.",
   "version": "0.1.0",
   "publisher": "local",
   "private": true,
@@ -13,11 +13,32 @@
   "contributes": {
     "commands": [
       { "command": "blameTrace.toggle", "title": "Blame Trace: Toggle Current Line Blame" },
-      { "command": "blameTrace.showCommit", "title": "Blame Trace: Show Current Line Commit" }
+      { "command": "blameTrace.showCommit", "title": "Blame Trace: Show Current Line Commit" },
+      { "command": "blameTrace.showSquashCommits", "title": "Blame Trace: Show Squash Commits" },
+      { "command": "blameTrace.showSquashCommit", "title": "Blame Trace: Show Squash Commit" },
+      { "command": "blameTrace.openMergeRequest", "title": "Blame Trace: Open Merge Request" },
+      { "command": "blameTrace.setGitLabToken", "title": "Blame Trace: Set GitLab Token" },
+      { "command": "blameTrace.deleteGitLabToken", "title": "Blame Trace: Delete GitLab Token" }
     ],
     "configuration": {
       "title": "Blame Trace",
       "properties": {
+        "blameTrace.gitlab.enabled": {
+          "type": "boolean", "default": false, "scope": "resource", "restricted": true,
+          "description": "Trace GitLab squash commits after displaying local blame. Requires a configured GitLab instance."
+        },
+        "blameTrace.gitlab.instanceUrl": {
+          "type": "string", "default": "https://gitlab.com", "scope": "resource", "restricted": true,
+          "description": "HTTPS GitLab instance URL, including any installation subpath."
+        },
+        "blameTrace.gitlab.projectPath": {
+          "type": "string", "default": "", "scope": "resource", "restricted": true,
+          "description": "Optional group/project override for the workspace folder's root repository. Nested repositories use their own remote."
+        },
+        "blameTrace.gitlab.remoteName": {
+          "type": "string", "default": "origin", "scope": "resource", "restricted": true,
+          "description": "Git remote used to determine the GitLab project."
+        },
         "blameTrace.enabled": {
           "type": "boolean",
           "default": true,

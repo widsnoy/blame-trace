@@ -93,9 +93,9 @@ test('incremental parser handles out of order hunks and reused metadata', () => 
     `${'0'.repeat(64)} 1 4 1`, 'filename file.txt'
   ].join('\n'));
   assert.deepEqual(rows, [
-    { kind: 'committed', sha: other, sourceLine: 1, author: 'Bob', authorTime: 7, summary: 'second' },
-    { kind: 'committed', sha, sourceLine: 4, author: 'Alice', authorTime: 42, summary: 'first' },
-    { kind: 'committed', sha, sourceLine: 8, author: 'Alice', authorTime: 42, summary: 'first' },
+    { kind: 'committed', sha: other, sourceLine: 1, sourcePath: 'file.txt', author: 'Bob', authorTime: 7, summary: 'second' },
+    { kind: 'committed', sha, sourceLine: 4, sourcePath: 'file.txt', author: 'Alice', authorTime: 42, summary: 'first' },
+    { kind: 'committed', sha, sourceLine: 8, sourcePath: 'file.txt', author: 'Alice', authorTime: 42, summary: 'first' },
     { kind: 'uncommitted' }
   ]);
 });

@@ -15,7 +15,7 @@ test('parse Git porcelain output for committed and uncommitted lines', () => {
     '\tconst a = 1;'
   ].join('\n'));
   assert.deepEqual(committed, {
-    kind: 'committed', sha: 'a'.repeat(40), sourceLine: 7,
+    kind: 'committed', sha: 'a'.repeat(40), sourceLine: 7, sourcePath: 'file.ts',
     author: '张三', authorTime: 1730000000, summary: '修复问题'
   });
   assert.deepEqual(parseBlame('0'.repeat(64) + ' 1 1 1\n\tnew line'), { kind: 'uncommitted' });
