@@ -1,0 +1,1847 @@
+{
+  "rounds": 7,
+  "samples": [
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 89.1024,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 85.22219999999999,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.058400000000006,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.03789999999997917,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 84.70860000000005,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 87.81489999999997,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 84.39919999999995,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 80.59249999999997,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 79.9176,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.05899999999996908,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.045900000000074215,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 80.83990000000017,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 80.47960000000012,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 81.47610000000009,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 82.04439999999977,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 79.69290000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.10719999999992069,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.09369999999989886,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 79.55999999999995,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 78.70640000000003,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 78.63390000000027,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 86.72860000000037,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 85.55330000000004,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.1641000000004169,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.18049999999993815,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 88.08240000000023,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 87.75540000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 88.15090000000055,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 85.61989999999999,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 86.48860000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.050399999999967804,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.03899999999998727,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 87.61290000000008,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 87.06510000000003,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 87.57100000000014,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 79.83819999999992,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 80.47980000000007,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.0466999999998734,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.04169999999999163,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 80.15910000000008,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 80.68190000000004,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 80.08469999999988,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 78.3469,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 79.89930000000004,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.08739999999988868,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.07489999999961583,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 80.19309999999996,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 79.07700000000023,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 80.89309999999978,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 88.47130000000016,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 90.18600000000015,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.1546000000003005,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.2604999999998654,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 86.2822000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 88.30430000000024,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 87.23840000000018,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 84.99090000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 87.71460000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.05010000000004311,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.04550000000000409,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 87.8537,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 86.75009999999997,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 87.8324,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 82.74520000000007,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 79.9502,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.05160000000000764,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.04809999999997672,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 82.31420000000003,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 84.04510000000005,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 83.12549999999987,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 102.42820000000029,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 95.0340000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.09970000000021173,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.08130000000028303,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 81.39350000000013,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 82.24450000000024,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 94.23199999999997,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 98.79529999999977,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 98.48149999999987,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.15259999999989304,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.18040000000019063,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 88.99769999999944,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 89.29699999999957,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 89.73570000000018,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 86.1867,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 85.0478,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.04660000000001219,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.03899999999998727,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 83.73350000000005,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 84.15729999999996,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 84.55950000000007,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 83.20000000000005,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 80.19500000000016,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.059300000000121145,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.04670000000010077,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 81.69139999999993,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 81.20600000000013,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 81.43460000000005,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 81.85910000000013,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 82.8402000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.08170000000018263,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.07549999999991996,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 78.86570000000029,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 84.16110000000026,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 85.53060000000005,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 91.80499999999984,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 94.08199999999988,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.17239999999992506,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.18519999999989523,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 88.48559999999998,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 86.60969999999998,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 88.38839999999982,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 88.4206,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 86.2466,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.06049999999999045,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.050199999999961165,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 93.10170000000005,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 93.60039999999992,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 86.31319999999994,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 86.74440000000004,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 91.22820000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.0681000000001859,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.049500000000080036,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 86.76240000000007,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 85.80269999999996,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 87.8110999999999,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 80.91730000000007,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 79.25800000000027,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.09580000000005384,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.07780000000002474,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 80.41750000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 80.75550000000021,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 81.96229999999969,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 89.5311999999999,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 87.85860000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.19329999999990832,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.1758999999997286,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 88.12019999999984,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 87.70710000000054,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 90.86569999999938,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 89.8527,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 89.25390000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.047300000000007,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.047000000000025466,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 86.01869999999997,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 84.9479,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 83.84260000000006,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 86.80409999999983,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 84.6396000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.047000000000025466,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.045200000000022555,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 93.28049999999985,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 90.76479999999992,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 94.33309999999983,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 82.27039999999988,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 81.60510000000022,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.1032999999997628,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.08699999999998909,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 86.26330000000007,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 89.02230000000009,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 93.14059999999972,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 89.23170000000027,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 91.03740000000016,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.31950000000006185,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.1835000000000946,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 87.91949999999952,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 88.64670000000024,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 90.73109999999997,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "file": "docs/lang/index.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "d0460ca0a7ac2001f41f2990308171073ee7bc703a9bccece36e78ad6bd9e202",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 7,
+              "cacheMs": 88.0243,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 8,
+              "cacheMs": 85.26310000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 7,
+              "cacheMs": 0.049200000000041655,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 8,
+              "cacheMs": 0.04510000000004766,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 7,
+              "cacheMs": 110.495,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 6,
+              "cacheMs": 96.98000000000002,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 8,
+              "cacheMs": 93.21379999999988,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/graph/mdst.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "8ea96ba42f6188bffa650233fcb725166fda4a10f45f37fa2a10cde87e86858c",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 237,
+              "cacheMs": 83.69370000000004,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 238,
+              "cacheMs": 84.03230000000008,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 237,
+              "cacheMs": 0.047100000000000364,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 238,
+              "cacheMs": 0.04129999999986467,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 237,
+              "cacheMs": 83.72379999999998,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 236,
+              "cacheMs": 97.55390000000011,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 238,
+              "cacheMs": 87.55490000000009,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/basic.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "cd964e249c9c450c5b1951d06ce91fd054e4dd31d06e3aa97a6d6b054f1a5973",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 535,
+              "cacheMs": 84.96250000000009,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 536,
+              "cacheMs": 89.63040000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 535,
+              "cacheMs": 0.15599999999994907,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 536,
+              "cacheMs": 0.08410000000003492,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 535,
+              "cacheMs": 158.11230000000023,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 534,
+              "cacheMs": 83.1246000000001,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 536,
+              "cacheMs": 81.57740000000013,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        },
+        {
+          "file": "docs/math/number-theory/continued-fraction.md",
+          "head": "11d6d53024e624b953754550f0b547823a8ea3ab",
+          "diskSha256": "e750ff066ddd39b2907af4409faf3a2253161ef5986bd389a630c8405c7386a1",
+          "scenarios": [
+            {
+              "name": "original",
+              "linesChecked": 1777,
+              "cacheMs": 86.93089999999984,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "insert",
+              "linesChecked": 1778,
+              "cacheMs": 87.79770000000008,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "undo",
+              "linesChecked": 1777,
+              "cacheMs": 0.15250000000014552,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "redo",
+              "linesChecked": 1778,
+              "cacheMs": 0.17679999999973006,
+              "builds": 0,
+              "cacheHit": true
+            },
+            {
+              "name": "replace-middle",
+              "linesChecked": 1777,
+              "cacheMs": 87.63120000000072,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "delete-middle",
+              "linesChecked": 1776,
+              "cacheMs": 88.76990000000023,
+              "builds": 1,
+              "cacheHit": false
+            },
+            {
+              "name": "multiple-edits",
+              "linesChecked": 1778,
+              "cacheMs": 89.32960000000003,
+              "builds": 1,
+              "cacheHit": false
+            }
+          ],
+          "diskUnchanged": true
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "file": "docs/lang/index.md",
+      "scenarios": [
+        {
+          "name": "original",
+          "medianMs": 88.0243,
+          "minMs": 84.99090000000001,
+          "maxMs": 89.8527,
+          "builds": 1
+        },
+        {
+          "name": "insert",
+          "medianMs": 86.2466,
+          "minMs": 85.0478,
+          "maxMs": 89.25390000000002,
+          "builds": 1
+        },
+        {
+          "name": "undo",
+          "medianMs": 0.05010000000004311,
+          "minMs": 0.04660000000001219,
+          "maxMs": 0.06049999999999045,
+          "builds": 0
+        },
+        {
+          "name": "redo",
+          "medianMs": 0.04510000000004766,
+          "minMs": 0.03789999999997917,
+          "maxMs": 0.050199999999961165,
+          "builds": 0
+        },
+        {
+          "name": "replace-middle",
+          "medianMs": 87.61290000000008,
+          "minMs": 83.73350000000005,
+          "maxMs": 110.495,
+          "builds": 1
+        },
+        {
+          "name": "delete-middle",
+          "medianMs": 87.06510000000003,
+          "minMs": 84.15729999999996,
+          "maxMs": 96.98000000000002,
+          "builds": 1
+        },
+        {
+          "name": "multiple-edits",
+          "medianMs": 86.31319999999994,
+          "minMs": 83.84260000000006,
+          "maxMs": 93.21379999999988,
+          "builds": 1
+        }
+      ]
+    },
+    {
+      "file": "docs/graph/mdst.md",
+      "scenarios": [
+        {
+          "name": "original",
+          "medianMs": 83.20000000000005,
+          "minMs": 79.83819999999992,
+          "maxMs": 86.80409999999983,
+          "builds": 1
+        },
+        {
+          "name": "insert",
+          "medianMs": 80.47980000000007,
+          "minMs": 79.9176,
+          "maxMs": 91.22820000000002,
+          "builds": 1
+        },
+        {
+          "name": "undo",
+          "medianMs": 0.05160000000000764,
+          "minMs": 0.0466999999998734,
+          "maxMs": 0.0681000000001859,
+          "builds": 0
+        },
+        {
+          "name": "redo",
+          "medianMs": 0.045900000000074215,
+          "minMs": 0.04129999999986467,
+          "maxMs": 0.049500000000080036,
+          "builds": 0
+        },
+        {
+          "name": "replace-middle",
+          "medianMs": 82.31420000000003,
+          "minMs": 80.15910000000008,
+          "maxMs": 93.28049999999985,
+          "builds": 1
+        },
+        {
+          "name": "delete-middle",
+          "medianMs": 84.04510000000005,
+          "minMs": 80.47960000000012,
+          "maxMs": 97.55390000000011,
+          "builds": 1
+        },
+        {
+          "name": "multiple-edits",
+          "medianMs": 83.12549999999987,
+          "minMs": 80.08469999999988,
+          "maxMs": 94.33309999999983,
+          "builds": 1
+        }
+      ]
+    },
+    {
+      "file": "docs/math/number-theory/basic.md",
+      "scenarios": [
+        {
+          "name": "original",
+          "medianMs": 82.04439999999977,
+          "minMs": 78.3469,
+          "maxMs": 102.42820000000029,
+          "builds": 1
+        },
+        {
+          "name": "insert",
+          "medianMs": 81.60510000000022,
+          "minMs": 79.25800000000027,
+          "maxMs": 95.0340000000001,
+          "builds": 1
+        },
+        {
+          "name": "undo",
+          "medianMs": 0.09970000000021173,
+          "minMs": 0.08170000000018263,
+          "maxMs": 0.15599999999994907,
+          "builds": 0
+        },
+        {
+          "name": "redo",
+          "medianMs": 0.08130000000028303,
+          "minMs": 0.07489999999961583,
+          "maxMs": 0.09369999999989886,
+          "builds": 0
+        },
+        {
+          "name": "replace-middle",
+          "medianMs": 80.41750000000002,
+          "minMs": 78.86570000000029,
+          "maxMs": 158.11230000000023,
+          "builds": 1
+        },
+        {
+          "name": "delete-middle",
+          "medianMs": 82.24450000000024,
+          "minMs": 78.70640000000003,
+          "maxMs": 89.02230000000009,
+          "builds": 1
+        },
+        {
+          "name": "multiple-edits",
+          "medianMs": 81.96229999999969,
+          "minMs": 78.63390000000027,
+          "maxMs": 94.23199999999997,
+          "builds": 1
+        }
+      ]
+    },
+    {
+      "file": "docs/math/number-theory/continued-fraction.md",
+      "scenarios": [
+        {
+          "name": "original",
+          "medianMs": 89.23170000000027,
+          "minMs": 86.72860000000037,
+          "maxMs": 98.79529999999977,
+          "builds": 1
+        },
+        {
+          "name": "insert",
+          "medianMs": 90.18600000000015,
+          "minMs": 85.55330000000004,
+          "maxMs": 98.48149999999987,
+          "builds": 1
+        },
+        {
+          "name": "undo",
+          "medianMs": 0.1641000000004169,
+          "minMs": 0.15250000000014552,
+          "maxMs": 0.31950000000006185,
+          "builds": 0
+        },
+        {
+          "name": "redo",
+          "medianMs": 0.18049999999993815,
+          "minMs": 0.1758999999997286,
+          "maxMs": 0.2604999999998654,
+          "builds": 0
+        },
+        {
+          "name": "replace-middle",
+          "medianMs": 88.08240000000023,
+          "minMs": 86.2822000000001,
+          "maxMs": 88.99769999999944,
+          "builds": 1
+        },
+        {
+          "name": "delete-middle",
+          "medianMs": 88.30430000000024,
+          "minMs": 86.60969999999998,
+          "maxMs": 89.29699999999957,
+          "builds": 1
+        },
+        {
+          "name": "multiple-edits",
+          "medianMs": 89.32960000000003,
+          "minMs": 87.23840000000018,
+          "maxMs": 90.86569999999938,
+          "builds": 1
+        }
+      ]
+    }
+  ]
+}

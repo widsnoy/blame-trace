@@ -197,17 +197,18 @@ export function activate(context: vscode.ExtensionContext): void {
         ? { root: gitRepo.rootUri.fsPath, head: apiHead }
         : await locateRepository(file, tokenSource.token);
       if (!repo || !isCurrent()) return;
-      const contents = document.getText();
-      let rows = cache.get(repo, file, version, contents);
+      let contents: string | undefined;
+      const getContents = () => contents ??= document.getText();
+      let rows = cache.get(repo, file, version, getContents);
       let attribution = rows?.[line];
       if (!attribution) {
         if (apiHead && !await pause()) return;
         if (Date.now() - (editedAt.get(file) ?? 0) < 250) {
-          attribution = await blameLine(repo, file, line + 1, contents, tokenSource.token);
+          attribution = await blameLine(repo, file, line + 1, getContents(), tokenSource.token);
           queueRebuild(repo, document);
         } else {
-          rows = await cache.load(repo, file, version, contents);
-          attribution = rows?.[line] ?? await blameLine(repo, file, line + 1, contents, tokenSource.token);
+          rows = await cache.load(repo, file, version, getContents());
+          attribution = rows?.[line] ?? await blameLine(repo, file, line + 1, getContents(), tokenSource.token);
         }
       }
       if (!isCurrent()) return;
