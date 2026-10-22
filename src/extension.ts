@@ -75,7 +75,6 @@ export function activate(context: vscode.ExtensionContext): void {
   let gitApiPromise: Promise<GitApi | undefined> | undefined;
   const watchedRepositories = new WeakSet<GitRepository>();
   let requestId = 0;
-  let timer: ReturnType<typeof setTimeout> | undefined;
   let cancellation: vscode.CancellationTokenSource | undefined;
   let decoratedEditor: vscode.TextEditor | undefined;
   let current: SelectionResult | undefined;
@@ -128,12 +127,11 @@ export function activate(context: vscode.ExtensionContext): void {
     scheduledEditor = vscode.window.activeTextEditor;
     scheduledLine = scheduledEditor?.selection.active.line;
     requestId += 1;
-    if (timer) clearTimeout(timer);
     cancellation?.cancel();
     cancellation?.dispose();
     cancellation = undefined;
     clearDecoration();
-    timer = setTimeout(() => { void update(requestId); }, 150);
+    void update(requestId);
   }
 
   function render(editor: vscode.TextEditor, line: number, result: SelectionResult): void {
@@ -161,28 +159,35 @@ export function activate(context: vscode.ExtensionContext): void {
     const version = document.version;
     const tokenSource = new vscode.CancellationTokenSource();
     cancellation = tokenSource;
+    const isCurrent = () => !tokenSource.token.isCancellationRequested && id === requestId &&
+      vscode.window.activeTextEditor === editor && document.version === version &&
+      editor.selection.active.line === line;
+    const pause = async () => {
+      await new Promise(resolve => setTimeout(resolve, 40));
+      return isCurrent();
+    };
     try {
       const api = await getGitApi();
-      if (tokenSource.token.isCancellationRequested) return;
+      if (!isCurrent()) return;
       const gitRepo = api?.getRepository(document.uri);
       const apiHead = gitRepo?.state.HEAD?.commit;
       if (gitRepo && apiHead && api) watchRepository(gitRepo, api);
+      if (!apiHead && !await pause()) return;
       const repo = gitRepo && apiHead
         ? { root: gitRepo.rootUri.fsPath, head: apiHead }
         : await locateRepository(file, tokenSource.token);
-      if (!repo || tokenSource.token.isCancellationRequested) return;
+      if (!repo || !isCurrent()) return;
       const key = `${repo.root}\0${repo.head}\0${file}\0${version}\0${line}`;
       let attribution = cache.get(key);
       if (!attribution) {
+        if (apiHead && !await pause()) return;
         attribution = await blameLine(repo, file, line + 1, document.getText(), tokenSource.token);
         if (attribution.kind !== 'unavailable') {
           cache.set(key, attribution);
           if (cache.size > 100) cache.delete(cache.keys().next().value!);
         }
       }
-      if (tokenSource.token.isCancellationRequested || id !== requestId ||
-        vscode.window.activeTextEditor !== editor || document.version !== version ||
-        editor.selection.active.line !== line) return;
+      if (!isCurrent()) return;
       const latestHead = gitRepo && apiHead
         ? gitRepo.state.HEAD?.commit
         : (await runGit(repo.root, ['rev-parse', '--verify', 'HEAD'], { token: tokenSource.token })).trim();
@@ -239,7 +244,6 @@ export function activate(context: vscode.ExtensionContext): void {
   }));
   context.subscriptions.push(vscode.workspace.onDidGrantWorkspaceTrust(schedule));
   context.subscriptions.push({ dispose: () => {
-    if (timer) clearTimeout(timer);
     cancellation?.cancel();
     cancellation?.dispose();
     clearDecoration();
