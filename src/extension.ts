@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
+import path from 'node:path';
 import { blameLine, locateRepository, runGit, showCommit, type Attribution, type Repository } from './git';
+import { DocumentBlameCache } from './documentCache';
 
 interface SelectionResult {
   repo: Repository;
@@ -70,7 +72,9 @@ export function activate(context: vscode.ExtensionContext): void {
   });
   context.subscriptions.push(output, decoration);
 
-  const cache = new Map<string, Attribution>();
+  const cache = new DocumentBlameCache();
+  const editedAt = new Map<string, number>();
+  const rebuildTimers = new Map<string, ReturnType<typeof setTimeout>>();
   let gitApi: GitApi | undefined;
   let gitApiPromise: Promise<GitApi | undefined> | undefined;
   const watchedRepositories = new WeakSet<GitRepository>();
@@ -87,11 +91,6 @@ export function activate(context: vscode.ExtensionContext): void {
     current = undefined;
   }
 
-  function invalidate(): void {
-    cache.clear();
-    schedule();
-  }
-
   function watchRepository(gitRepo: GitRepository, api: GitApi): void {
     if (watchedRepositories.has(gitRepo)) return;
     watchedRepositories.add(gitRepo);
@@ -100,7 +99,13 @@ export function activate(context: vscode.ExtensionContext): void {
       const nextHead = gitRepo.state.HEAD?.commit;
       if (nextHead === head) return;
       head = nextHead;
-      cache.clear();
+      cache.invalidateRepository(gitRepo.rootUri.fsPath);
+      for (const [file, timer] of rebuildTimers) {
+        const relative = path.relative(gitRepo.rootUri.fsPath, file);
+        if (!relative || relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) continue;
+        clearTimeout(timer);
+        rebuildTimers.delete(file);
+      }
       const activeUri = vscode.window.activeTextEditor?.document.uri;
       if (activeUri && api.getRepository(activeUri) === gitRepo) schedule();
     }));
@@ -132,6 +137,21 @@ export function activate(context: vscode.ExtensionContext): void {
     cancellation = undefined;
     clearDecoration();
     void update(requestId);
+  }
+
+  function queueRebuild(repo: Repository, document: vscode.TextDocument): void {
+    const file = document.uri.fsPath;
+    const previous = rebuildTimers.get(file);
+    if (previous) clearTimeout(previous);
+    const version = document.version;
+    const timer = setTimeout(() => {
+      rebuildTimers.delete(file);
+      if (document.isClosed || document.version !== version) return;
+      void cache.load(repo, file, version, document.getText()).then(rows => {
+        if (rows && vscode.window.activeTextEditor?.document === document && document.version === version) schedule();
+      });
+    }, 250);
+    rebuildTimers.set(file, timer);
   }
 
   function render(editor: vscode.TextEditor, line: number, result: SelectionResult): void {
@@ -177,14 +197,17 @@ export function activate(context: vscode.ExtensionContext): void {
         ? { root: gitRepo.rootUri.fsPath, head: apiHead }
         : await locateRepository(file, tokenSource.token);
       if (!repo || !isCurrent()) return;
-      const key = `${repo.root}\0${repo.head}\0${file}\0${version}\0${line}`;
-      let attribution = cache.get(key);
+      const contents = document.getText();
+      let rows = cache.get(repo, file, version, contents);
+      let attribution = rows?.[line];
       if (!attribution) {
         if (apiHead && !await pause()) return;
-        attribution = await blameLine(repo, file, line + 1, document.getText(), tokenSource.token);
-        if (attribution.kind !== 'unavailable') {
-          cache.set(key, attribution);
-          if (cache.size > 100) cache.delete(cache.keys().next().value!);
+        if (Date.now() - (editedAt.get(file) ?? 0) < 250) {
+          attribution = await blameLine(repo, file, line + 1, contents, tokenSource.token);
+          queueRebuild(repo, document);
+        } else {
+          rows = await cache.load(repo, file, version, contents);
+          attribution = rows?.[line] ?? await blameLine(repo, file, line + 1, contents, tokenSource.token);
         }
       }
       if (!isCurrent()) return;
@@ -232,20 +255,34 @@ export function activate(context: vscode.ExtensionContext): void {
   }));
   context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(schedule));
   context.subscriptions.push(vscode.workspace.onDidChangeTextDocument((event) => {
-    if (event.document === vscode.window.activeTextEditor?.document) invalidate();
+    if (event.contentChanges.length === 0 || event.document.uri.scheme !== 'file') return;
+    const file = event.document.uri.fsPath;
+    cache.noteChange(file);
+    editedAt.set(file, Date.now());
+    const timer = rebuildTimers.get(file);
+    if (timer) clearTimeout(timer);
+    rebuildTimers.delete(file);
+    if (event.document === vscode.window.activeTextEditor?.document) schedule();
   }));
-  context.subscriptions.push(vscode.workspace.onDidSaveTextDocument(invalidate));
-  context.subscriptions.push(vscode.workspace.onDidCloseTextDocument(invalidate));
+  context.subscriptions.push(vscode.workspace.onDidCloseTextDocument(document => {
+    cache.noteChange(document.uri.fsPath);
+    editedAt.delete(document.uri.fsPath);
+    const timer = rebuildTimers.get(document.uri.fsPath);
+    if (timer) clearTimeout(timer);
+    rebuildTimers.delete(document.uri.fsPath);
+  }));
   context.subscriptions.push(vscode.workspace.onDidChangeConfiguration((event) => {
     if (event.affectsConfiguration('blameTrace.enabled')) schedule();
   }));
   context.subscriptions.push(vscode.window.onDidChangeWindowState((event) => {
-    if (event.focused) invalidate();
+    if (event.focused) schedule();
   }));
   context.subscriptions.push(vscode.workspace.onDidGrantWorkspaceTrust(schedule));
   context.subscriptions.push({ dispose: () => {
     cancellation?.cancel();
     cancellation?.dispose();
+    for (const timer of rebuildTimers.values()) clearTimeout(timer);
+    cache.dispose();
     clearDecoration();
   } });
   schedule();

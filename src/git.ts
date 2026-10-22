@@ -21,9 +21,9 @@ export class GitError extends Error {
 export async function runGit(
   cwd: string,
   args: readonly string[],
-  options: { input?: string; token?: CancellationToken; maxBytes?: number } = {}
+  options: { input?: string; token?: CancellationToken; signal?: AbortSignal; maxBytes?: number } = {}
 ): Promise<string> {
-  if (options.token?.isCancellationRequested) throw new GitError('Cancelled');
+  if (options.token?.isCancellationRequested || options.signal?.aborted) throw new GitError('Cancelled');
   return new Promise<string>((resolve, reject) => {
     const child = spawn('git', args, { cwd, windowsHide: true, shell: false, stdio: ['pipe', 'pipe', 'pipe'] });
     const stdout: Buffer[] = [];
@@ -33,17 +33,18 @@ export async function runGit(
     let errorBytes = 0;
     let settled = false;
     let cancellation: { dispose(): void } | undefined;
+    const abort = () => { child.kill(); finish(new GitError('Cancelled')); };
     const finish = (error?: Error, value?: string) => {
       if (settled) return;
       settled = true;
       cancellation?.dispose();
+      options.signal?.removeEventListener('abort', abort);
       if (error) reject(error);
       else resolve(value ?? '');
     };
-    cancellation = options.token?.onCancellationRequested(() => {
-      child.kill();
-      finish(new GitError('Cancelled'));
-    });
+    cancellation = options.token?.onCancellationRequested(abort);
+    options.signal?.addEventListener('abort', abort, { once: true });
+    if (options.signal?.aborted) abort();
     child.stdout.on('data', (chunk: Buffer) => {
       bytes += chunk.length;
       if (bytes > maxBytes) {
@@ -103,6 +104,71 @@ export function parseBlame(output: string): Attribution {
   };
 }
 
+export function parseIncrementalBlame(output: string): readonly Attribution[] {
+  const metadata = new Map<string, Map<string, string>>();
+  const hunks: { sha: string; source: number; result: number; count: number }[] = [];
+  const lines = output.split(/\r?\n/);
+  let current: { sha: string; source: number; result: number; count: number } | undefined;
+  for (const line of lines) {
+    const header = /^([0-9a-f]{40}|[0-9a-f]{64}) (\d+) (\d+) (\d+)$/.exec(line);
+    if (header) {
+      current = { sha: header[1], source: Number(header[2]), result: Number(header[3]), count: Number(header[4]) };
+      if (!current.source || !current.result || !current.count) throw new GitError('Invalid incremental blame range');
+      hunks.push(current);
+      continue;
+    }
+    if (!current) continue;
+    if (line.startsWith('filename ')) { current = undefined; continue; }
+    const separator = line.indexOf(' ');
+    if (separator > 0) {
+      const fields = metadata.get(current.sha) ?? new Map<string, string>();
+      fields.set(line.slice(0, separator), line.slice(separator + 1));
+      metadata.set(current.sha, fields);
+    }
+  }
+  const rows: Attribution[] = [];
+  for (const hunk of hunks) {
+    const fields = metadata.get(hunk.sha);
+    for (let offset = 0; offset < hunk.count; offset++) {
+      const index = hunk.result - 1 + offset;
+      if (rows[index]) throw new GitError('Overlapping incremental blame ranges');
+      rows[index] = /^0+$/.test(hunk.sha)
+        ? { kind: 'uncommitted' }
+        : {
+          kind: 'committed', sha: hunk.sha, sourceLine: hunk.source + offset,
+          author: fields?.get('author') || 'Unknown',
+          authorTime: Number(fields?.get('author-time') || 0),
+          summary: fields?.get('summary') || '(no summary)'
+        };
+    }
+  }
+  if (!hunks.length || Array.from({ length: rows.length }, (_, index) => rows[index]).some(row => !row)) {
+    throw new GitError('Incomplete incremental blame output');
+  }
+  return rows;
+}
+
+function relativePath(repo: Repository, file: string): string | undefined {
+  const relative = path.relative(repo.root, file);
+  return !relative || relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)
+    ? undefined : relative;
+}
+
+export async function blameDocument(
+  repo: Repository, file: string, contents: string, signal?: AbortSignal
+): Promise<readonly Attribution[] | undefined> {
+  const relative = relativePath(repo, file);
+  if (!relative || Buffer.byteLength(contents, 'utf8') > 8 * 1024 * 1024) return undefined;
+  try {
+    const output = await runGit(repo.root, [
+      'blame', '--incremental', '--encoding=UTF-8', '--contents', '-', repo.head, '--', relative
+    ], { input: contents, signal, maxBytes: 2 * 1024 * 1024 });
+    return parseIncrementalBlame(output);
+  } catch {
+    return undefined;
+  }
+}
+
 export async function blameLine(
   repo: Repository,
   file: string,
@@ -110,8 +176,8 @@ export async function blameLine(
   contents: string,
   token?: CancellationToken
 ): Promise<Attribution> {
-  const relative = path.relative(repo.root, file);
-  if (!relative || relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
+  const relative = relativePath(repo, file);
+  if (!relative) {
     return { kind: 'unavailable', reason: 'File is outside the Git repository' };
   }
   if (Buffer.byteLength(contents, 'utf8') > 8 * 1024 * 1024) {

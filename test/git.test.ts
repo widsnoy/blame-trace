@@ -3,7 +3,7 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
-import { blameLine, locateRepository, parseBlame, runGit } from '../src/git';
+import { blameDocument, blameLine, locateRepository, parseBlame, runGit } from '../src/git';
 
 test('parse Git porcelain output for committed and uncommitted lines', () => {
   const committed = parseBlame([
@@ -72,6 +72,7 @@ test('SHA-256 repositories return a 64-character commit ID', async () => {
     const result = await blameLine(repo, file, 1, 'line\n');
     assert.equal(result.kind, 'committed');
     if (result.kind === 'committed') assert.equal(result.sha.length, 64);
+    assert.deepEqual((await blameDocument(repo, file, 'line\n'))?.[0], result);
   } finally {
     if (!path.resolve(repoRoot).startsWith(`${tempBase}${path.sep}`)) throw new Error('Unsafe test cleanup path');
     await rm(repoRoot, { recursive: true, force: true });
