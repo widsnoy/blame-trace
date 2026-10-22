@@ -1,0 +1,39 @@
+{
+  "name": "blame-trace",
+  "displayName": "Blame Trace",
+  "description": "Show Git blame for the current line, with future squash history support.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/src/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "blameTrace.toggle", "title": "Blame Trace: Toggle Current Line Blame" },
+      { "command": "blameTrace.showCommit", "title": "Blame Trace: Show Current Line Commit" }
+    ],
+    "configuration": {
+      "title": "Blame Trace",
+      "properties": {
+        "blameTrace.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Git blame at the end of the current line."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "test": "npm run compile && node --test out/test/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.9.0"
+  }
+}
