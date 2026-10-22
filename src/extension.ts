@@ -6,6 +6,23 @@ interface SelectionResult {
   attribution: Attribution;
 }
 
+interface GitRepository {
+  readonly rootUri: vscode.Uri;
+  readonly state: {
+    readonly HEAD: { readonly commit?: string } | undefined;
+    readonly onDidChange: vscode.Event<void>;
+  };
+}
+
+interface GitApi {
+  getRepository(uri: vscode.Uri): GitRepository | null;
+}
+
+interface GitExtension {
+  readonly enabled: boolean;
+  getAPI(version: 1): GitApi;
+}
+
 function relativeDate(unixSeconds: number): string {
   if (!unixSeconds) return 'unknown date';
   const elapsed = Math.max(0, Date.now() - unixSeconds * 1000);
@@ -54,11 +71,16 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(output, decoration);
 
   const cache = new Map<string, Attribution>();
+  let gitApi: GitApi | undefined;
+  let gitApiPromise: Promise<GitApi | undefined> | undefined;
+  const watchedRepositories = new WeakSet<GitRepository>();
   let requestId = 0;
   let timer: ReturnType<typeof setTimeout> | undefined;
   let cancellation: vscode.CancellationTokenSource | undefined;
   let decoratedEditor: vscode.TextEditor | undefined;
   let current: SelectionResult | undefined;
+  let scheduledEditor: vscode.TextEditor | undefined;
+  let scheduledLine: number | undefined;
 
   function clearDecoration(): void {
     decoratedEditor?.setDecorations(decoration, []);
@@ -71,7 +93,40 @@ export function activate(context: vscode.ExtensionContext): void {
     schedule();
   }
 
+  function watchRepository(gitRepo: GitRepository, api: GitApi): void {
+    if (watchedRepositories.has(gitRepo)) return;
+    watchedRepositories.add(gitRepo);
+    let head = gitRepo.state.HEAD?.commit;
+    context.subscriptions.push(gitRepo.state.onDidChange(() => {
+      const nextHead = gitRepo.state.HEAD?.commit;
+      if (nextHead === head) return;
+      head = nextHead;
+      cache.clear();
+      const activeUri = vscode.window.activeTextEditor?.document.uri;
+      if (activeUri && api.getRepository(activeUri) === gitRepo) schedule();
+    }));
+  }
+
+  async function getGitApi(): Promise<GitApi | undefined> {
+    const extension = vscode.extensions.getExtension<GitExtension>('vscode.git');
+    if (!extension || (extension.isActive && !extension.exports.enabled)) {
+      gitApi = undefined;
+      return undefined;
+    }
+    if (gitApi) return gitApi;
+    if (!gitApiPromise) {
+      gitApiPromise = Promise.resolve(extension.activate())
+        .then(exports => exports.getAPI(1))
+        .then(api => { gitApi = api; return api; })
+        .catch(() => undefined)
+        .finally(() => { gitApiPromise = undefined; });
+    }
+    return gitApiPromise;
+  }
+
   function schedule(): void {
+    scheduledEditor = vscode.window.activeTextEditor;
+    scheduledLine = scheduledEditor?.selection.active.line;
     requestId += 1;
     if (timer) clearTimeout(timer);
     cancellation?.cancel();
@@ -107,7 +162,14 @@ export function activate(context: vscode.ExtensionContext): void {
     const tokenSource = new vscode.CancellationTokenSource();
     cancellation = tokenSource;
     try {
-      const repo = await locateRepository(file, tokenSource.token);
+      const api = await getGitApi();
+      if (tokenSource.token.isCancellationRequested) return;
+      const gitRepo = api?.getRepository(document.uri);
+      const apiHead = gitRepo?.state.HEAD?.commit;
+      if (gitRepo && apiHead && api) watchRepository(gitRepo, api);
+      const repo = gitRepo && apiHead
+        ? { root: gitRepo.rootUri.fsPath, head: apiHead }
+        : await locateRepository(file, tokenSource.token);
       if (!repo || tokenSource.token.isCancellationRequested) return;
       const key = `${repo.root}\0${repo.head}\0${file}\0${version}\0${line}`;
       let attribution = cache.get(key);
@@ -121,7 +183,9 @@ export function activate(context: vscode.ExtensionContext): void {
       if (tokenSource.token.isCancellationRequested || id !== requestId ||
         vscode.window.activeTextEditor !== editor || document.version !== version ||
         editor.selection.active.line !== line) return;
-      const latestHead = (await runGit(repo.root, ['rev-parse', '--verify', 'HEAD'], { token: tokenSource.token })).trim();
+      const latestHead = gitRepo && apiHead
+        ? gitRepo.state.HEAD?.commit
+        : (await runGit(repo.root, ['rev-parse', '--verify', 'HEAD'], { token: tokenSource.token })).trim();
       if (latestHead !== repo.head || id !== requestId || tokenSource.token.isCancellationRequested) return;
       if (attribution.kind === 'unavailable') {
         output.appendLine(`${file}:${line + 1}: ${attribution.reason}`);
@@ -157,7 +221,9 @@ export function activate(context: vscode.ExtensionContext): void {
   }));
 
   context.subscriptions.push(vscode.window.onDidChangeTextEditorSelection((event) => {
-    if (event.textEditor === vscode.window.activeTextEditor) schedule();
+    if (event.textEditor !== vscode.window.activeTextEditor) return;
+    const line = event.textEditor.selection.active.line;
+    if (event.textEditor !== scheduledEditor || line !== scheduledLine) schedule();
   }));
   context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(schedule));
   context.subscriptions.push(vscode.workspace.onDidChangeTextDocument((event) => {

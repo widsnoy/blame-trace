@@ -71,17 +71,13 @@ export async function runGit(
 
 export async function locateRepository(file: string, token?: CancellationToken): Promise<Repository | undefined> {
   const cwd = path.dirname(file);
-  let root: string;
   try {
-    root = (await runGit(cwd, ['rev-parse', '--show-toplevel'], { token })).trim();
+    const output = await runGit(cwd, ['rev-parse', '--show-toplevel', '--verify', 'HEAD'], { token });
+    const [root, head] = output.trimEnd().split(/\r?\n/);
+    if (!root || !head) return undefined;
+    return { root, head };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') throw new GitError('Git executable was not found in PATH');
-    return undefined;
-  }
-  try {
-    const head = (await runGit(root, ['rev-parse', '--verify', 'HEAD'], { token })).trim();
-    return { root, head };
-  } catch {
     return undefined;
   }
 }
